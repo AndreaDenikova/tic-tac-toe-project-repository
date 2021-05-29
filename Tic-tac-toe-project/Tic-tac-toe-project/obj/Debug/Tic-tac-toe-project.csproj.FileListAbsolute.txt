@@ -8,3 +8,13 @@ D:\Projects\Tic-Tac-Toe\Tic-tac-toe-project\Tic-tac-toe-project\obj\Debug\Tic-ta
 D:\Projects\Tic-Tac-Toe\Tic-tac-toe-project\Tic-tac-toe-project\obj\Debug\Tic-tac-toe-project.exe
 D:\Projects\Tic-Tac-Toe\Tic-tac-toe-project\Tic-tac-toe-project\obj\Debug\Tic-tac-toe-project.pdb
 D:\Projects\Tic-Tac-Toe\Tic-tac-toe-project\Tic-tac-toe-project\obj\Debug\Tic-tac-toe-project.csprojAssemblyReference.cache
+D:\Projects\tic-tac-toe-project-repository\Tic-tac-toe-project\Tic-tac-toe-project\bin\Debug\Tic-tac-toe-project.exe.config
+D:\Projects\tic-tac-toe-project-repository\Tic-tac-toe-project\Tic-tac-toe-project\bin\Debug\Tic-tac-toe-project.exe
+D:\Projects\tic-tac-toe-project-repository\Tic-tac-toe-project\Tic-tac-toe-project\bin\Debug\Tic-tac-toe-project.pdb
+D:\Projects\tic-tac-toe-project-repository\Tic-tac-toe-project\Tic-tac-toe-project\obj\Debug\Tic-tac-toe-project.csprojAssemblyReference.cache
+D:\Projects\tic-tac-toe-project-repository\Tic-tac-toe-project\Tic-tac-toe-project\obj\Debug\Tic_tac_toe_project.Form1.resources
+D:\Projects\tic-tac-toe-project-repository\Tic-tac-toe-project\Tic-tac-toe-project\obj\Debug\Tic_tac_toe_project.Properties.Resources.resources
+D:\Projects\tic-tac-toe-project-repository\Tic-tac-toe-project\Tic-tac-toe-project\obj\Debug\Tic-tac-toe-project.csproj.GenerateResource.cache
+D:\Projects\tic-tac-toe-project-repository\Tic-tac-toe-project\Tic-tac-toe-project\obj\Debug\Tic-tac-toe-project.csproj.CoreCompileInputs.cache
+D:\Projects\tic-tac-toe-project-repository\Tic-tac-toe-project\Tic-tac-toe-project\obj\Debug\Tic-tac-toe-project.exe
+D:\Projects\tic-tac-toe-project-repository\Tic-tac-toe-project\Tic-tac-toe-project\obj\Debug\Tic-tac-toe-project.pdb
