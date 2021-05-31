@@ -256,7 +256,7 @@ namespace Tic_tac_toe_project
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(26)))), ((int)(((byte)(32)))));
-            this.ClientSize = new System.Drawing.Size(1556, 720);
+            this.ClientSize = new System.Drawing.Size(1386, 720);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
