@@ -10,10 +10,20 @@ using System.Windows.Forms;
 
 namespace Tic_tac_toe_project
 {
+    class Move
+    {
+        public int row, col;
+    };
+
     public partial class Form1 : Form
     {
+        bool isPlayer = true;
+
         public Form1()
         {
+            Button[,] Board = { { button1, button2, button3 },
+                                { button4, button5, button6 },
+                                { button7, button8, button9 }};
             InitializeComponent();
         }
 
@@ -25,7 +35,6 @@ namespace Tic_tac_toe_project
         private void button1_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            checkWinner();
             changeBtnText(btn);
             // throw new NotImplementedException();
         }
@@ -34,55 +43,50 @@ namespace Tic_tac_toe_project
         {
             Button btn = sender as Button;
             changeBtnText(btn);
-            checkWinner();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             changeBtnText(btn);
-            checkWinner();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             changeBtnText(btn);
-            checkWinner();
         }
         private void button5_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             changeBtnText(btn);
-            checkWinner();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             changeBtnText(btn);
-            checkWinner();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             changeBtnText(btn);
-            checkWinner();
+
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             changeBtnText(btn);
-            checkWinner();
+
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             changeBtnText(btn);
-            checkWinner();
+
         }
 
         private void changeBtnText(Button btn)
@@ -90,10 +94,17 @@ namespace Tic_tac_toe_project
             if (btn.Text == "")
             {
                 btn.Text = "X";
+                checkWinner(symbolString(isPlayer));
+                isPlayer = false;
             }
         }
 
-        private void checkWinner()
+        private string symbolString(bool isPlayer)
+        {
+            return isPlayer ? "X" : "O";
+        }
+
+        private bool checkWinner(string CurrentPlayer)
         {
             Button[,] winningCombinations = new Button[8, 3]
             {
@@ -113,28 +124,67 @@ namespace Tic_tac_toe_project
                 validInARow = 0;
                 for (int index = 0; index < winningCombinations.GetLength(1); index++)
                 {
-                    if (winningCombinations[possibleWin, index].Text == "X") //currentPlayer.Symbol
+                    if (winningCombinations[possibleWin, index].Text == CurrentPlayer) //currentPlayer.Symbol
                     {
                         validInARow++;
                         if (validInARow == winningCombinations.GetLength(1))
                         {
-                            MessageBox.Show("X wins");
-                            return;
+                            MessageBox.Show(CurrentPlayer + " wins");
+                            return true;
                         }
                     }
                 }
             }
+            return false;
         }
 
-        private bool isDraw()
+        private int checkScore()
+        {
+            if (checkWinner(symbolString(isPlayer))) return +10;
+            else if (checkWinner(symbolString(!isPlayer))) return -10;
+            else return 0;
+        }
+
+        private void findBestMove(Button[,] board)
+        {
+            int bestValue = int.MinValue;
+
+            Move bestMove = new Move { row = -1, col = -1 };
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (board[i, j].Text == "")
+                    {
+                        board[i, j].Text = symbolString(isPlayer);
+
+                        int moveVal = minimax(board, 0, false);
+
+                        board[i, j].Text = "";
+
+                        if (moveVal > bestValue)
+                        {
+                            bestMove.row = i;
+                            bestMove.col = j;
+                            bestValue = moveVal;
+                        }
+                    }
+                }
+            }
+            board[bestMove.row, bestMove.col].Text = symbolString(isPlayer);
+            isPlayer = true;
+        }
+
+        private bool movesLeft()
         {
             Button[] allButtons = new Button[] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
             foreach (var button in allButtons)
             {
                 if (button.Text == "")
-                    return false;
+                    return true;
             }
-            return true;
+            return false;
         }
 
     }
