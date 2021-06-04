@@ -10,10 +10,6 @@ using System.Windows.Forms;
 
 namespace Tic_tac_toe_project
 {
-    class Move
-    {
-        public int row, col;
-    };
 
     public partial class Form1 : Form
     {
@@ -145,6 +141,68 @@ namespace Tic_tac_toe_project
             else return 0;
         }
 
+        private int minimax(Button[,] board, int depth, Boolean isMax)
+        {
+            int score = checkScore();
+
+            if (score == 10)
+            {
+                return score;
+            }
+
+            if (score == -10)
+            {
+                return score;
+            }
+
+            if (movesLeft() == false) //tie
+            {
+                return 0;
+            }
+
+            if (isMax)
+            {
+                int best = -1000;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (board[i, j].Text == "")
+                        {
+                            board[i, j].Text = symbolString(isPlayer);
+
+                            best = Math.Max(best, minimax(board, depth + 1, !isMax));
+
+                            board[i, j].Text = "";
+                        }
+                    }
+                }
+                return best;
+            }
+            
+            else
+            {
+                int best = 1000;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (board[i, j].Text == "")
+                        {
+                            board[i, j].Text = symbolString(!isPlayer); //opponent
+
+                            best = Math.Min(best, minimax(board, depth + 1, !isMax));
+
+                            board[i, j].Text = "";
+                        }
+                    }
+                }
+                return best;
+            }
+        }
+
         private void findBestMove(Button[,] board)
         {
             int bestValue = int.MinValue;
@@ -188,4 +246,9 @@ namespace Tic_tac_toe_project
         }
 
     }
+
+    class Move
+    {
+        public int row, col;
+    };
 }
