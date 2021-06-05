@@ -18,6 +18,7 @@ namespace Tic_tac_toe_project
         public Form1()
         {
             InitializeComponent();
+            buttonNewGame.Visible = false; 
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -45,6 +46,7 @@ namespace Tic_tac_toe_project
             {
                 disableBoard();
                 MessageBox.Show("tie");
+                buttonNewGame.Visible = true;
             }
         }
 
@@ -90,6 +92,7 @@ namespace Tic_tac_toe_project
                             {
                                 disableBoard();
                                 MessageBox.Show(CurrentPlayer + " wins");
+                                buttonNewGame.Visible = true;
                             }
 
                             return true;
@@ -222,6 +225,39 @@ namespace Tic_tac_toe_project
             button7.Enabled = false;
             button8.Enabled = false;
             button9.Enabled = false;
+        }
+
+        private void clearBoard()
+        {
+            button1.Text = "";
+            button2.Text = "";
+            button3.Text = "";
+            button4.Text = "";
+            button5.Text = "";
+            button6.Text = "";
+            button7.Text = "";
+            button8.Text = "";
+            button9.Text = "";
+        }
+
+        private void enableBoard()
+        {
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
+            button4.Enabled = true;
+            button5.Enabled = true;
+            button6.Enabled = true;
+            button7.Enabled = true;
+            button8.Enabled = true;
+            button9.Enabled = true;
+        }
+
+        private void buttonNewGame_Click(object sender, EventArgs e)
+        {
+            clearBoard();
+            enableBoard();
+            buttonNewGame.Visible = false; 
         }
     }
 

@@ -35,7 +35,6 @@ namespace Tic_tac_toe_project
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button_WOC1 = new ePOSOne.btnProduct.Button_WOC();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -44,6 +43,7 @@ namespace Tic_tac_toe_project
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.buttonNewGame = new ePOSOne.btnProduct.Button_WOC();
             this.SuspendLayout();
             // 
             // button1
@@ -78,26 +78,6 @@ namespace Tic_tac_toe_project
             this.button10.Text = "X";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // button_WOC1
-            // 
-            this.button_WOC1.BorderColor = System.Drawing.Color.Orange;
-            this.button_WOC1.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(29)))), ((int)(((byte)(36)))));
-            this.button_WOC1.FlatAppearance.BorderSize = 0;
-            this.button_WOC1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(29)))), ((int)(((byte)(36)))));
-            this.button_WOC1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(29)))), ((int)(((byte)(36)))));
-            this.button_WOC1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOC1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_WOC1.Location = new System.Drawing.Point(663, 661);
-            this.button_WOC1.Name = "button_WOC1";
-            this.button_WOC1.OnHoverBorderColor = System.Drawing.Color.Orange;
-            this.button_WOC1.OnHoverButtonColor = System.Drawing.Color.Orange;
-            this.button_WOC1.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(29)))), ((int)(((byte)(36)))));
-            this.button_WOC1.Size = new System.Drawing.Size(181, 80);
-            this.button_WOC1.TabIndex = 19;
-            this.button_WOC1.Text = "New Game";
-            this.button_WOC1.TextColor = System.Drawing.Color.White;
-            this.button_WOC1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -251,6 +231,27 @@ namespace Tic_tac_toe_project
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button_Click);
             // 
+            // buttonNewGame
+            // 
+            this.buttonNewGame.BorderColor = System.Drawing.Color.Orange;
+            this.buttonNewGame.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(29)))), ((int)(((byte)(36)))));
+            this.buttonNewGame.FlatAppearance.BorderSize = 0;
+            this.buttonNewGame.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(29)))), ((int)(((byte)(36)))));
+            this.buttonNewGame.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(29)))), ((int)(((byte)(36)))));
+            this.buttonNewGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNewGame.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNewGame.Location = new System.Drawing.Point(663, 661);
+            this.buttonNewGame.Name = "buttonNewGame";
+            this.buttonNewGame.OnHoverBorderColor = System.Drawing.Color.Orange;
+            this.buttonNewGame.OnHoverButtonColor = System.Drawing.Color.Orange;
+            this.buttonNewGame.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(29)))), ((int)(((byte)(36)))));
+            this.buttonNewGame.Size = new System.Drawing.Size(181, 80);
+            this.buttonNewGame.TabIndex = 19;
+            this.buttonNewGame.Text = "New Game";
+            this.buttonNewGame.TextColor = System.Drawing.Color.White;
+            this.buttonNewGame.UseVisualStyleBackColor = true;
+            this.buttonNewGame.Click += new System.EventHandler(this.buttonNewGame_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -265,7 +266,7 @@ namespace Tic_tac_toe_project
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button10);
-            this.Controls.Add(this.button_WOC1);
+            this.Controls.Add(this.buttonNewGame);
             this.Controls.Add(this.button1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -280,7 +281,7 @@ namespace Tic_tac_toe_project
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private ePOSOne.btnProduct.Button_WOC button_WOC1;
+        private ePOSOne.btnProduct.Button_WOC buttonNewGame;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
