@@ -63,7 +63,7 @@ namespace Tic_tac_toe_project
             this.button1.TabIndex = 1;
             this.button1.UseCompatibleTextRendering = true;
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button_Click);
             // 
             // button10
             // 
@@ -114,10 +114,9 @@ namespace Tic_tac_toe_project
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button2.Size = new System.Drawing.Size(110, 93);
             this.button2.TabIndex = 21;
-            this.button2.Text = "O";
             this.button2.UseCompatibleTextRendering = true;
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.button_Click);
             // 
             // button3
             // 
@@ -136,7 +135,7 @@ namespace Tic_tac_toe_project
             this.button3.TabIndex = 22;
             this.button3.UseCompatibleTextRendering = true;
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.button_Click);
             // 
             // button4
             // 
@@ -155,7 +154,7 @@ namespace Tic_tac_toe_project
             this.button4.TabIndex = 23;
             this.button4.UseCompatibleTextRendering = true;
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.button_Click);
             // 
             // button5
             // 
@@ -174,7 +173,7 @@ namespace Tic_tac_toe_project
             this.button5.TabIndex = 24;
             this.button5.UseCompatibleTextRendering = true;
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.button_Click);
             // 
             // button6
             // 
@@ -193,7 +192,7 @@ namespace Tic_tac_toe_project
             this.button6.TabIndex = 25;
             this.button6.UseCompatibleTextRendering = true;
             this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.button_Click);
             // 
             // button7
             // 
@@ -212,7 +211,7 @@ namespace Tic_tac_toe_project
             this.button7.TabIndex = 26;
             this.button7.UseCompatibleTextRendering = true;
             this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.Click += new System.EventHandler(this.button_Click);
             // 
             // button8
             // 
@@ -231,7 +230,7 @@ namespace Tic_tac_toe_project
             this.button8.TabIndex = 27;
             this.button8.UseCompatibleTextRendering = true;
             this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.button8.Click += new System.EventHandler(this.button_Click);
             // 
             // button9
             // 
@@ -250,7 +249,7 @@ namespace Tic_tac_toe_project
             this.button9.TabIndex = 28;
             this.button9.UseCompatibleTextRendering = true;
             this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.button9.Click += new System.EventHandler(this.button_Click);
             // 
             // Form1
             // 

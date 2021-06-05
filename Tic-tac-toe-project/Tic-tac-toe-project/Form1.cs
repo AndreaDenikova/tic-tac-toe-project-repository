@@ -17,9 +17,6 @@ namespace Tic_tac_toe_project
 
         public Form1()
         {
-            Button[,] Board = { { button1, button2, button3 },
-                                { button4, button5, button6 },
-                                { button7, button8, button9 }};
             InitializeComponent();
         }
 
@@ -28,61 +25,27 @@ namespace Tic_tac_toe_project
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             changeBtnText(btn);
-            // throw new NotImplementedException();
-        }
+            checkWinner(symbolString(isPlayer), true);
+            isPlayer = false;
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            changeBtnText(btn);
-        }
+            if (movesLeft())
+            {
+                Button[,] Board = { { button1, button2, button3 },
+                                { button4, button5, button6 },
+                                { button7, button8, button9 }};
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            changeBtnText(btn);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            changeBtnText(btn);
-        }
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            changeBtnText(btn);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            changeBtnText(btn);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            changeBtnText(btn);
-
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            changeBtnText(btn);
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            changeBtnText(btn);
-
+                findBestMove(Board);
+                checkWinner(symbolString(!isPlayer), true); ;
+            }
+            else if (movesLeft() == false && checkWinner("X", false) == false)
+            {
+                disableBoard();
+                MessageBox.Show("tie");
+            }
         }
 
         private void changeBtnText(Button btn)
@@ -90,8 +53,6 @@ namespace Tic_tac_toe_project
             if (btn.Text == "")
             {
                 btn.Text = "X";
-                checkWinner(symbolString(isPlayer));
-                isPlayer = false;
             }
         }
 
@@ -100,7 +61,7 @@ namespace Tic_tac_toe_project
             return isPlayer ? "X" : "O";
         }
 
-        private bool checkWinner(string CurrentPlayer)
+        private bool checkWinner(string CurrentPlayer, bool showMessage)
         {
             Button[,] winningCombinations = new Button[8, 3]
             {
@@ -125,7 +86,12 @@ namespace Tic_tac_toe_project
                         validInARow++;
                         if (validInARow == winningCombinations.GetLength(1))
                         {
-                            MessageBox.Show(CurrentPlayer + " wins");
+                            if (showMessage)
+                            {
+                                disableBoard();
+                                MessageBox.Show(CurrentPlayer + " wins");
+                            }
+
                             return true;
                         }
                     }
@@ -136,8 +102,8 @@ namespace Tic_tac_toe_project
 
         private int checkScore()
         {
-            if (checkWinner(symbolString(isPlayer))) return +10;
-            else if (checkWinner(symbolString(!isPlayer))) return -10;
+            if (checkWinner(symbolString(isPlayer), false)) return +10;
+            else if (checkWinner(symbolString(!isPlayer), false)) return -10;
             else return 0;
         }
 
@@ -180,7 +146,7 @@ namespace Tic_tac_toe_project
                 }
                 return best;
             }
-            
+
             else
             {
                 int best = 1000;
@@ -245,6 +211,18 @@ namespace Tic_tac_toe_project
             return false;
         }
 
+        private void disableBoard()
+        {
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+            button6.Enabled = false;
+            button7.Enabled = false;
+            button8.Enabled = false;
+            button9.Enabled = false;
+        }
     }
 
     class Move
