@@ -18,7 +18,7 @@ namespace Tic_tac_toe_project
         public Form1()
         {
             InitializeComponent();
-            buttonNewGame.Visible = false; 
+            buttonNewGame.Visible = false;
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -178,31 +178,61 @@ namespace Tic_tac_toe_project
 
             Move bestMove = new Move { row = -1, col = -1 };
 
+            Dictionary<Move, int> results = new Dictionary<Move, int>();
+
+            var moves = new List<Move>();
+
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
                     if (board[i, j].Text == "")
                     {
-                        board[i, j].Text = symbolString(isPlayer);
-
-                        int moveVal = minimax(board, 0, false);
-
-                        board[i, j].Text = "";
-
-                        if (moveVal > bestValue)
-                        {
-                            bestMove.row = i;
-                            bestMove.col = j;
-                            bestValue = moveVal;
-                        }
+                        Move emptyMove = new Move { row = i, col = j };
+                        moves.Add(emptyMove);
                     }
                 }
             }
+
+            var tasks = new List<Task<int>>();
+
+            foreach (var move in moves)
+            {
+                Task<int> t = new Task<int>(() =>
+                {
+                    if (board[move.row, move.col].InvokeRequired)
+                    {
+                        return (int)Invoke((MethodInvoker)delegate { helperFunction(board, move, results); });
+                    }
+                    return helperFunction(board, move, results);
+
+                });
+                tasks.Add(t);
+                t.Start();
+            }
+            Task.WaitAll(tasks.ToArray());
+
+            foreach (var keyValuePair in results)
+            {
+                if (keyValuePair.Value > bestValue)
+                {
+                    bestValue = keyValuePair.Value;
+                    bestMove = keyValuePair.Key;
+                }
+            }
+
             board[bestMove.row, bestMove.col].Text = symbolString(isPlayer);
             isPlayer = true;
         }
 
+        private int helperFunction(Button[,] board, Move move, Dictionary<Move, int> results)
+        {
+            board[move.row, move.col].Text = symbolString(isPlayer);
+            int moveVal = minimax(board, 0, false);
+            results[move] = moveVal;
+            board[move.row, move.col].Text = "";
+            return moveVal;
+        }
         private bool movesLeft()
         {
             Button[] allButtons = new Button[] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
@@ -257,7 +287,7 @@ namespace Tic_tac_toe_project
         {
             clearBoard();
             enableBoard();
-            buttonNewGame.Visible = false; 
+            buttonNewGame.Visible = false;
         }
     }
 
