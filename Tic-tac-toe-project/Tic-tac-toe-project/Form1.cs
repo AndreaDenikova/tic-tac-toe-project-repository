@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,7 @@ namespace Tic_tac_toe_project
                                 { button7, button8, button9 }};
 
                 findBestMove(Board);
-                checkWinner(symbolString(!isPlayer), true); ;
+                checkWinner(symbolString(!isPlayer), true); 
             }
             else if (movesLeft() == false && checkWinner("X", false) == false)
             {
@@ -131,7 +132,7 @@ namespace Tic_tac_toe_project
 
             if (isMax)
             {
-                int best = -1000;
+                int best = int.MinValue;
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -152,7 +153,7 @@ namespace Tic_tac_toe_project
 
             else
             {
-                int best = 1000;
+                int best = int.MaxValue;
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -172,8 +173,11 @@ namespace Tic_tac_toe_project
             }
         }
 
-        private void findBestMove(Button[,] board)
+        private async void findBestMove(Button[,] board)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
             int bestValue = int.MinValue;
 
             Move bestMove = new Move { row = -1, col = -1 };
@@ -202,7 +206,8 @@ namespace Tic_tac_toe_project
                 {
                     if (board[move.row, move.col].InvokeRequired)
                     {
-                        return (int)Invoke((MethodInvoker)delegate { helperFunction(board, move, results); });
+                        return (int)Invoke(new Func<int>(() => helperFunction(board, move, results)));
+                        //return (int)Invoke((MethodInvoker)delegate { helperFunction(board, move, results); });
                     }
                     return helperFunction(board, move, results);
 
@@ -210,7 +215,8 @@ namespace Tic_tac_toe_project
                 tasks.Add(t);
                 t.Start();
             }
-            Task.WaitAll(tasks.ToArray());
+
+            await Task.WhenAll(tasks.ToArray());
 
             foreach (var keyValuePair in results)
             {
@@ -223,6 +229,8 @@ namespace Tic_tac_toe_project
 
             board[bestMove.row, bestMove.col].Text = symbolString(isPlayer);
             isPlayer = true;
+            stopWatch.Stop();
+            MessageBox.Show("elasped time " + stopWatch.Elapsed);
         }
 
         private int helperFunction(Button[,] board, Move move, Dictionary<Move, int> results)
